@@ -208,6 +208,10 @@ float randf(float base, float range) {
                  withSpeed:(float)speed
               withRotation:(float)rotation {
 
+    if (piecesX <= 0 || piecesY <= 0) {
+        return;
+    }
+    
 	float pieceXsize = self.contentSize.width / piecesX;
 	float pieceYsize = self.contentSize.height / piecesY;
 	
