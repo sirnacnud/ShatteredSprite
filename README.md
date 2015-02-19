@@ -20,7 +20,7 @@ To end the shattered effect, you can call the reset method and the sprite will r
 ```
 
 ## Limitations
-Currently there isn't support to use effect shaders will the shattered effect is running.
+Currently there isn't support to use effect shaders while the shattered effect is running.
 
 ## Dependencies
 You need to be using Cocos2d-swift v3.
