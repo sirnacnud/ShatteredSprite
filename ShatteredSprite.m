@@ -94,7 +94,7 @@ typedef struct _TriangleData {
     
     for (int i = 0; i < _numOfTriangles; ++i) {
         float ad = _triangles[i].adelta * delta;
-        CGPoint	vd = ccp(_triangles[i].vdelta.x * delta, _triangles[i].vdelta.y * delta);
+        CGPoint vd = ccp(_triangles[i].vdelta.x * delta, _triangles[i].vdelta.y * delta);
         
         _triangles[i].center = ccpAdd(_triangles[i].center, vd);
         
@@ -212,25 +212,25 @@ float randf(float base, float range) {
         return;
     }
     
-	float pieceXsize = self.contentSize.width / piecesX;
-	float pieceYsize = self.contentSize.height / piecesY;
-	
+    float pieceXsize = self.contentSize.width / piecesX;
+    float pieceYsize = self.contentSize.height / piecesY;
+    
     float xMin = FLT_MAX;
     float xMax = FLT_MIN;
     float yMin = FLT_MAX;
     float yMax = FLT_MIN;
     
-	// Build the points first, so they can be wobbled a bit to look more random...
-	CGPoint	ptArray[piecesX + 1][piecesY + 1];
-	for (int x = 0; x <= piecesX; ++x) {
-		for (int y = 0; y <= piecesY; ++y) {
-			CGPoint	pt = CGPointMake(x * pieceXsize, y * pieceYsize);
-			
+    // Build the points first, so they can be wobbled a bit to look more random...
+    CGPoint ptArray[piecesX + 1][piecesY + 1];
+    for (int x = 0; x <= piecesX; ++x) {
+        for (int y = 0; y <= piecesY; ++y) {
+            CGPoint pt = CGPointMake(x * pieceXsize, y * pieceYsize);
+            
             // Edge pieces aren't wobbled, just interior.
-			if (x > 0 && x < piecesX && y > 0 && y < piecesY) {
-				pt = ccpAdd(pt, ccp(roundf(randf(0.0, pieceXsize * 0.45)), roundf(randf(0.0, pieceYsize * 0.45))));
-			}
-			ptArray[x][y] = pt;
+            if (x > 0 && x < piecesX && y > 0 && y < piecesY) {
+                pt = ccpAdd(pt, ccp(roundf(randf(0.0, pieceXsize * 0.45)), roundf(randf(0.0, pieceYsize * 0.45))));
+            }
+            ptArray[x][y] = pt;
             
             if (pt.x < xMin) {
                 xMin = pt.x;
@@ -243,13 +243,13 @@ float randf(float base, float range) {
             } else if( pt.y > yMax ) {
                 yMax = pt.y;
             }
-		}
-	}
+        }
+    }
     
     // Set the center/extents for culling purposes
     _center = GLKVector2Make((xMin + xMax) * 0.5f, (yMin + yMax) * 0.5f);
     _extents = GLKVector2Make((xMax - xMin) * 0.5f, (yMax - yMin) * 0.5f);
-	
+    
     _numOfTriangles = piecesX * (piecesY * 2);
     _numOfVertices = _numOfTriangles * 3;
     
@@ -270,16 +270,16 @@ float randf(float base, float range) {
     CGFloat textureWidth = self.texture.pixelWidth / self.texture.contentScale;
     CGFloat textureHeight = self.texture.pixelHeight / self.texture.contentScale;
     
-	for (int x = 0; x < piecesX; ++x) {
-		for (int y = 0; y < piecesY; ++y) {
-			// Direction (v) and rotation (a) are done by triangle too.
-			// CenterPoint is for rotating each triangle
-			// vdelta is random, but could be done based on distance/direction from the center of the image to explode out...
+    for (int x = 0; x < piecesX; ++x) {
+        for (int y = 0; y < piecesY; ++y) {
+            // Direction (v) and rotation (a) are done by triangle too.
+            // CenterPoint is for rotating each triangle
+            // vdelta is random, but could be done based on distance/direction from the center of the image to explode out...
             
             // Triangle 1.
             _triangles[triangleIndex].vdelta = ccp(randf(0.0, speed), randf(0.0, speed));
             _triangles[triangleIndex].adelta = randf(0.0, rotation);
-			_triangles[triangleIndex].center = ccp((x * pieceXsize) + (pieceXsize * 0.3), (y * pieceYsize) + (pieceYsize * 0.3));
+            _triangles[triangleIndex].center = ccp((x * pieceXsize) + (pieceXsize * 0.3), (y * pieceYsize) + (pieceYsize * 0.3));
             
             // Vertex 1 of triangle 1.
             _vertices[vertexIndex].color = color;
@@ -338,8 +338,8 @@ float randf(float base, float range) {
             
             ++vertexIndex;
             ++triangleIndex;
-		}
-	}
+        }
+    }
 }
 
 - (void)reset {
