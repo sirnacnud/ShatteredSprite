@@ -29,7 +29,10 @@
 @interface ShatteredSprite : CCSprite
 
 // Call to shatter the sprite.
-- (void)shatterWithPiecesX:(NSInteger)piecesX withPiecesY:(NSInteger)piecesY withSpeed:(float)speed withRotation:(float)rotation;
+- (void)shatterWithPiecesX:(NSInteger)piecesX
+               withPiecesY:(NSInteger)piecesY
+                 withSpeed:(float)speed
+              withRotation:(float)rotation;
 
 // Resets the sprite from the shattered state back to default.
 - (void)reset;
