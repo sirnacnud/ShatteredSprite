@@ -136,6 +136,10 @@ typedef struct _TriangleData {
 
 -(void)draw:(CCRenderer*)renderer transform:(const GLKMatrix4*)transform {
     if (_numOfTriangles > 0) {
+        if (self.effect) {
+            NSLog(@"Shader effects aren't supported with shattered effect");
+        }
+
         if (CCRenderCheckVisbility(transform, _center, _extents)) {
             CCRenderBuffer buffer = [renderer enqueueTriangles:_numOfTriangles
                                                    andVertexes:_numOfVertices
