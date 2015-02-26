@@ -62,6 +62,10 @@ typedef struct _TriangleData {
     GLKVector2 _extents;
 }
 
++ (instancetype)shatteredSpriteWithSprite:(CCSprite*)sprite {
+    return [ShatteredSprite spriteWithTexture:sprite.texture rect:sprite.textureRect];
+}
+
 - (instancetype)init {
     self = [super init];
     

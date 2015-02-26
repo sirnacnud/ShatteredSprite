@@ -31,6 +31,9 @@
 // Gravity specified in units per second.
 @property (nonatomic) CGFloat gravity;
 
+// Create ShatteredSprite from a sprite.
++ (instancetype)shatteredSpriteWithSprite:(CCSprite*)sprite;
+
 // Call to shatter the sprite.
 - (void)shatterWithPiecesX:(NSInteger)piecesX
                withPiecesY:(NSInteger)piecesY
