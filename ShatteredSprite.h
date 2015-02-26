@@ -28,6 +28,9 @@
 // sprite texture is broken up in to pieces that move with a speed and rotation.
 @interface ShatteredSprite : CCSprite
 
+// Gravity specified in units per second.
+@property (nonatomic) CGFloat gravity;
+
 // Call to shatter the sprite.
 - (void)shatterWithPiecesX:(NSInteger)piecesX
                withPiecesY:(NSInteger)piecesY

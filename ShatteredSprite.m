@@ -92,6 +92,8 @@ typedef struct _TriangleData {
     float yMin = FLT_MAX;
     float yMax = FLT_MIN;
     
+    CGPoint gravity = ccp(0.0f, self.gravity / 60.0f);
+    
     for (int i = 0; i < _numOfTriangles; ++i) {
         float ad = _triangles[i].adelta * delta;
         CGPoint vd = ccp(_triangles[i].vdelta.x * delta, _triangles[i].vdelta.y * delta);
@@ -125,6 +127,8 @@ typedef struct _TriangleData {
             _vertices[j].position.x = position.x;
             _vertices[j].position.y = position.y;
         }
+        
+        _triangles[i].vdelta = ccpAdd(_triangles[i].vdelta, gravity);
     }
     
     // Set the center/extents for culling purposes.
